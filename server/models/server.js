@@ -26,7 +26,7 @@ class Server {
   }
 
   routes() {
-    this.app.use("cities", require("../routes/cities"));
+    this.app.use("/citie", require("../routes/cities"));
   }
 
   listen() {
