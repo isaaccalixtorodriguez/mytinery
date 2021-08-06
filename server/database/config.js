@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const connection = async () => {
   try {
@@ -9,9 +9,9 @@ const connection = async () => {
       useFindAndModify: false,
     });
 
-    console.log("Mongodb connection established");
+    process.stdout.write('Mongodb connection established\n');
   } catch (error) {
-    throw new Error(`Mongodb connection error : ${error}`);
+    process.stdout.write(`Mongodb connection error : ${error}\n`);
   }
 };
 

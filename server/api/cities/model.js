@@ -1,17 +1,17 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const CitiesSchema = Schema({
   name: {
     type: String,
-    required: [true, "The name is mandatory"],
+    required: [true, 'The name is required'],
   },
   country: {
     type: String,
-    required: [true, "The country is mandatory"],
+    required: [true, 'The country is required'],
   },
   img: {
     type: String,
-    required: [true, "The url of the image is mandatory"],
+    required: [true, 'The url of the image is required'],
   },
   status: {
     type: Boolean,
@@ -19,10 +19,11 @@ const CitiesSchema = Schema({
   },
 });
 
+// eslint-disable-next-line func-names
 CitiesSchema.methods.toJSON = function () {
   const { __v, _id, ...city } = this.toObject();
   city.uid = _id;
   return city;
 };
 
-module.exports = model("Cities", CitiesSchema);
+module.exports = model('Cities', CitiesSchema);

@@ -1,8 +1,9 @@
-const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+const router = require('./router');
 
-const { connection } = require("../database/config");
+const { connection } = require('../database/config');
 
 class Server {
   constructor() {
@@ -14,6 +15,7 @@ class Server {
     this.routes();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   async connectionDataBase() {
     await connection();
   }
@@ -22,16 +24,16 @@ class Server {
     this.app.use(cors());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(morgan("tiny"));
+    this.app.use(morgan('tiny'));
   }
 
   routes() {
-    this.app.use("/citie", require("../routes/cities"));
+    this.app.use('/citie', router.cities);
   }
 
   listen() {
     this.app.listen(this.port, () => {
-      console.log(`App listening at http://localhost:${this.port}`);
+      process.stdout.write(`App listening at http://localhost:${this.port}\n`);
     });
   }
 }
