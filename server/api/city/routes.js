@@ -1,5 +1,4 @@
 const { Router } = require('express');
-
 const controllers = require('./controllers');
 const validations = require('./validations');
 

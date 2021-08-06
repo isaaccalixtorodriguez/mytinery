@@ -1,5 +1,9 @@
-const cities = require('./cities/routes');
+const city = require('./city/routes');
+const user = require('./user/routes');
+const itinerary = require('./itinerary/routes');
 
 module.exports = {
-  cities,
+  city,
+  user,
+  itinerary,
 };

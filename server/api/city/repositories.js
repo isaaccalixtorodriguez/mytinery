@@ -2,8 +2,9 @@ const Cities = require('./model');
 
 const create = async (data) => {
   const cities = new Cities(data);
+  const res = await cities.save();
 
-  await cities.save();
+  return res;
 };
 
 const getAll = async () => Cities.find({ status: true });

@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const router = require('./router');
-
 const { connection } = require('../database/config');
 
 class Server {
@@ -28,7 +27,9 @@ class Server {
   }
 
   routes() {
-    this.app.use('/citie', router.cities);
+    this.app.use('/city', router.city);
+    this.app.use('/user', router.user);
+    this.app.use('/itineraries', router.itinerary);
   }
 
   listen() {
