@@ -11,7 +11,7 @@ const isCityEqual = async (body) => {
   }
 };
 
-const validations = [
+const create = [
   check('name', 'The name is required').not().isEmpty(),
   check('country', 'The country is required').not().isEmpty(),
   check('img', 'The url of the image is required').not().isEmpty(),
@@ -19,4 +19,6 @@ const validations = [
   captureChecks,
 ];
 
-module.exports = validations;
+module.exports = {
+  create,
+};

@@ -1,13 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const UsersSchema = Schema({
-  firstname: {
+  name: {
     type: String,
-    required: [true, 'The first name is required'],
-  },
-  lastname: {
-    type: String,
-    required: [true, 'The last name is required'],
+    required: [true, 'The name is required'],
   },
   email: {
     type: String,
@@ -27,9 +23,9 @@ const UsersSchema = Schema({
 // eslint-disable-next-line func-names
 UsersSchema.methods.toJSON = function () {
   const {
-    __v, _id, password, ...user
+    __v, status, _id, password, ...user
   } = this.toObject();
-  user.uid = _id;
+  user.id = _id;
   return user;
 };
 

@@ -3,15 +3,15 @@ const repositories = require('./repositories');
 
 const create = async (req = request, res = response) => {
   const {
-    firstname, lastname, email, password,
+    name, email, password,
   } = req.body;
 
   repositories
     .create({
-      firstname, lastname, email, password,
+      name, email, password,
     })
-    .then((user) => res.status(200).send({ user }))
-    .catch(() => res.status(500).send({ error: 'Internal Server Error' }));
+    .then((user) => res.status(200).json({ ok: true, response: user }))
+    .catch((error) => res.status(500).json({ ok: false, response: 'Internal Server Error', error }));
 };
 
 module.exports = {

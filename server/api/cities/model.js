@@ -22,8 +22,9 @@ const CitiesSchema = Schema({
 // eslint-disable-next-line func-names
 CitiesSchema.methods.toJSON = function () {
   const {
-    __v, _id, status, ...city
+    __v, status, _id, ...city
   } = this.toObject();
+  city.id = _id;
   return city;
 };
 

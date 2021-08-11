@@ -13,9 +13,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
+
 app.use('/cities', router.city);
 app.use('/users', router.user);
 app.use('/itineraries', router.itinerary);
+app.use('/login', router.auth);
 
 module.exports = {
   app,
