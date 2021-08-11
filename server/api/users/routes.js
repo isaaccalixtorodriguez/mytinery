@@ -1,10 +1,11 @@
 const { Router } = require('express');
 const { validateJWT } = require('../../middlewares/validate_jwt');
 const controllers = require('./controllers');
-const validation = require('./validation');
+const validations = require('./validations');
 
 const router = Router();
 
-router.post('/', [validateJWT, validation.create], controllers.create);
+router.post('/', [validateJWT, validations.create], controllers.create);
+router.post('/signin', validations.login, controllers.login);
 
 module.exports = router;

@@ -18,6 +18,13 @@ const create = [
   captureChecks,
 ];
 
+const login = [
+  check('email', 'The email is required').not().isEmpty(),
+  check('password', 'The password is required').not().isEmpty(),
+  captureChecks,
+];
+
 module.exports = {
   create,
+  login,
 };
