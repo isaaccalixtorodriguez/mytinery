@@ -63,8 +63,9 @@ const ItinerarySchema = Schema({
 
 // eslint-disable-next-line func-names
 ItinerarySchema.methods.toJSON = function () {
-  const { __v, _id, ...itinerary } = this.toObject();
-  itinerary.uid = _id;
+  const {
+    __v, _id, status, ...itinerary
+  } = this.toObject();
   return itinerary;
 };
 

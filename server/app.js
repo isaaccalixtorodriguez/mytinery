@@ -1,6 +1,5 @@
-require('dotenv').config();
-const Server = require('./api/server');
+const { app, port } = require('./api/server');
 
-const server = new Server();
-
-server.listen();
+app.listen(port, () => {
+  process.stdout.write(`App listening at http://localhost:${port}\n`);
+});

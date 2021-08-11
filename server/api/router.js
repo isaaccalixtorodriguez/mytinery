@@ -1,6 +1,6 @@
-const city = require('./city/routes');
-const user = require('./user/routes');
-const itinerary = require('./itinerary/routes');
+const city = require('./cities/routes');
+const user = require('./users/routes');
+const itinerary = require('./itineraries/routes');
 
 module.exports = {
   city,

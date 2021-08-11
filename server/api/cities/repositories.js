@@ -7,9 +7,12 @@ const create = async (data) => {
   return res;
 };
 
+const getCity = async (city) => Cities.find({ name: city });
+
 const getAll = async () => Cities.find({ status: true });
 
 module.exports = {
   create,
+  getCity,
   getAll,
 };

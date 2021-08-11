@@ -5,7 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "concurrently \"nodemon app.js \" \" cd ../client && npm start\"",
-    "dev": "nodemon app"
+    "dev": "nodemon app",
+    "test": "jest --runInBand"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +27,8 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
-    "nodemon": "^2.0.12"
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.4"
   }
 }
