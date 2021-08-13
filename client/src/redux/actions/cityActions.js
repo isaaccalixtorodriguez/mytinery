@@ -8,7 +8,7 @@ export const cityActions = {
     allCities: () => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get(API + '/cities/all')
+                const response = await axios.get(API + '/cities')
                 if (response.status === 200) {
                     dispatch({
                         type: 'ALL_CITIES', payload: {

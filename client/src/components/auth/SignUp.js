@@ -48,7 +48,7 @@ const SignUp = (props) => {
                 country: ''
             }
 
-            response ? setErrors({fields}) : setUser({fields})
+            response ? setErrors(fields) : setUser(fields)
 
             response && response.map(err => setErrors(prevState => {
                 return {...prevState, [err.context.label] : err.message}

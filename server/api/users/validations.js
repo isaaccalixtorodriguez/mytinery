@@ -11,9 +11,12 @@ const existUser = async (email) => {
 };
 
 const create = [
-  check('name', 'The title is required').not().isEmpty(),
-  check('email', 'The email is required').not().isEmpty(),
+  check('firstName', 'The first name is required').not().isEmpty(),
+  check('lastName', 'The last name is required').not().isEmpty(),
+  check('email', 'The email is required').not().isEmpty().isEmail(),
   check('password', 'The password is required').not().isEmpty(),
+  check('userPic', 'The user picture is required').not().isEmpty(),
+  check('country', 'The country is required').not().isEmpty(),
   check('email').custom(existUser),
   captureChecks,
 ];

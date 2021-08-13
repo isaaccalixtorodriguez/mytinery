@@ -5,7 +5,8 @@ const validations = require('./validations');
 
 const router = Router();
 
-router.post('/', [validateJWT, validations.create], controllers.create);
+router.post('/signup', validations.create, controllers.create);
 router.post('/signin', validations.login, controllers.login);
+router.get('/signinls', validateJWT, controllers.getData);
 
 module.exports = router;

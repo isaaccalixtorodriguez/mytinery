@@ -17,6 +17,9 @@ app.use(morgan('tiny'));
 app.use('/cities', router.city);
 app.use('/user', router.user);
 app.use('/itineraries', router.itinerary);
+app.use('/checkuser', router.checkuser);
+app.use('/comments', router.comments);
+app.use('/like', router.like);
 
 module.exports = {
   app,

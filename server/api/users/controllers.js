@@ -6,14 +6,14 @@ const { generateJWT } = require('../../helpers/generate_jwt');
 
 const create = async (req = request, res = response) => {
   const {
-    name, email, password,
+    firstName, lastName, email, password, userPic, country,
   } = req.body;
 
   repositories
     .create({
-      name, email, password,
+      firstName, lastName, email, password, userPic, country,
     })
-    .then((user) => res.status(200).json({ ok: true, response: user }))
+    .then((user) => res.status(200).json({ success: true, response: user }))
     .catch((error) => res.status(500).json({ ok: false, response: 'Internal Server Error', error }));
 };
 
@@ -39,13 +39,27 @@ const login = async (req, res = response) => {
 
     const token = await generateJWT({ id: user.id, userPic: user.userPic });
 
-    res.status(200).json({ success: true, response: { user, token } });
+    res.status(200).json({
+      success: true,
+      response: {
+        firstName: user.firstName, token, userPic: user.userPic,
+      },
+    });
   } catch (error) {
     res.status(500).json({ ok: false, response: 'Contact the administrator' });
   }
 };
 
+const getData = async (req, res = response) => {
+  const { user } = req;
+  res.status(200).json({
+    success: true,
+    response: { userPic: user.userPic, firstName: user.firstName },
+  });
+};
+
 module.exports = {
   create,
   login,
+  getData,
 };

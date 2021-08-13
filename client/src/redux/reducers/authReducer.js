@@ -6,7 +6,7 @@ export const authReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case 'LOG_USER':
-            localStorage.setItem('userLogged', JSON.stringify({name: action.payload.user.name, userPic: action.payload.user.userPic}))
+            localStorage.setItem('userLogged', JSON.stringify({firstName: action.payload.firstName, userPic: action.payload.userPic}))
             localStorage.setItem('token', action.payload.token)
             
             return { ...state, userLogged: action.payload }

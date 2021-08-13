@@ -9,7 +9,7 @@ export const authActions = {
         return async (dispatch, getState) => {
             try {
                 const response = await axios.post(API + '/user/signup', user)
-
+              
                 if (response.data.validatorErrors) {
                     return response.data.validatorErrors //joi validator
                 } else if (!response.data.success) {
@@ -31,6 +31,7 @@ export const authActions = {
         return async (dispatch, getState) => {
             try {
                 const response = await axios.post(API + '/user/signin', user)
+
                 if (response.data.success) {
                     dispatch({
                         type: 'LOG_USER',
@@ -58,7 +59,7 @@ export const authActions = {
             try {
                 const response = await axios.get(API + '/user/signinls', {
                     headers: {
-                        'Authorization': `Bearer ${user.token}`
+                        'x-token': `${user.token}`
                     }
                 })
                 dispatch({

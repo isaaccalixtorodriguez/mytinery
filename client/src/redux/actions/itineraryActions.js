@@ -38,7 +38,9 @@ export const itineraryActions = {
         return async (dispatch, getState) => {
             try {
                 const response = await axios.get(API + '/like/' + itineraryId,
-                    { headers: { 'Authorization': 'Bearer ' + user.token } }
+                    { headers: {
+                        'x-token': `${user.token}`
+                    } }
                 )
                 if (response.status === 200) {
                     return response.data.response
@@ -52,7 +54,9 @@ export const itineraryActions = {
         return async (dispatch, getState) => {
             try {
                 const response = await axios.get(API + '/checkuser/' + itineraryId,
-                    { headers: { 'Authorization': 'Bearer ' + user.token } })
+                    { headers: {
+                        'x-token': `${user.token}`
+                    } })
                 if (response.status === 200) {
                     return response.data.response
                 }

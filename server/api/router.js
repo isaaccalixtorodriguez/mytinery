@@ -1,11 +1,15 @@
 const city = require('./cities/routes');
 const user = require('./users/routes');
 const itinerary = require('./itineraries/routes');
-const auth = require('./auth/routes');
+const checkuser = require('./checkuser/routes');
+const comments = require('./comments/routes');
+const like = require('./like/routes');
 
 module.exports = {
   city,
   user,
   itinerary,
-  auth,
+  checkuser,
+  comments,
+  like,
 };

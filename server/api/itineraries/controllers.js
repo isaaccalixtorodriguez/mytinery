@@ -5,11 +5,15 @@ const create = async (req = request, res = response) => {
   const {
     title,
     img,
+    activities,
     authorName,
     authorPic,
     price,
     duration,
+    likes,
+    hashtags,
     comments,
+    usersLike,
     cityId,
   } = req.body;
 
@@ -17,11 +21,15 @@ const create = async (req = request, res = response) => {
     .create({
       title,
       img,
+      activities,
       authorName,
       authorPic,
       price,
       duration,
+      likes,
+      hashtags,
       comments,
+      usersLike,
       cityId,
     })
     .then((itinerary) => res.status(200).json({ ok: true, response: itinerary }))
