@@ -20,6 +20,7 @@ app.use('/itineraries', router.itinerary);
 app.use('/checkuser', router.checkuser);
 app.use('/comments', router.comments);
 app.use('/like', router.like);
+app.use('/comment', router.comment);
 
 module.exports = {
   app,

@@ -6,7 +6,7 @@ const createComment = async (idItinery, comment, user) => {
     {
       $push: {
         comments: {
-          userId: user.id,
+          userId: user.userId,
           text: comment,
           userName: `${user.firstName} ${user.lastName}`,
           userPic: user.userPic,

@@ -6,17 +6,21 @@ const getLikes = async (req = request, res = response) => {
   const { id: idItinery } = req.params;
 
   repositories
-    .getLikes(idItinery)
-    .then((itinerary) => {
-      // eslint-disable-next-line max-len
-      const userLikeCheck = itinerary.usersLike.find((id) => id === idUser);
+    .like(idItinery, idUser)
+    .then(() => {
+      repositories.getLikes(idItinery)
+        .then((itinerary) => {
+          // eslint-disable-next-line max-len
+          const userLikeCheck = itinerary.usersLike.find((id) => String(id) === String(idUser));
 
-      res.status(200).json({
-        success: true,
-        response: { likes: itinerary.likes, liked: !!userLikeCheck },
-      });
+          res.status(200).json({
+            success: true,
+            response: { likes: itinerary.likes, liked: !!userLikeCheck },
+          });
+        })
+        .catch((error) => res.status(500).json({ ok: false, response: 'Internal Server Error', error }));
     })
-    .catch(() => res.status(500).json({ ok: false, response: 'Internal Server Error' }));
+    .catch((error) => res.status(500).json({ ok: false, response: 'Internal Server Error' }, error));
 };
 
 module.exports = {

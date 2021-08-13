@@ -4,6 +4,7 @@ const controllers = require('./controllers');
 
 const router = Router();
 
-router.post('/:id', validateJWT, controllers.create);
+router.delete('/:id', validateJWT, controllers.remove);
+router.put('/:id', validateJWT, controllers.update);
 
 module.exports = router;

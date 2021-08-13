@@ -9,12 +9,17 @@ const getCommentsAndLike = async (req = request, res = response) => {
     .getCommentsAndLike(idItinery)
     .then((itinerary) => {
       // eslint-disable-next-line max-len
-      const userComments = itinerary.comments.filter((comment) => String(comment.userId) === idUser);
+      const commentsIds = [];
+      itinerary.comments.forEach(({ userId, _id: id }) => {
+        if (String(userId) === String(idUser)) {
+          commentsIds.push(id);
+        }
+      });
       const userLikeCheck = itinerary.usersLike.find((id) => id === idUser);
 
       res.status(200).json({
         success: true,
-        response: { arrayOwnerCheck: userComments, likedChek: !!userLikeCheck },
+        response: { arrayOwnerCheck: commentsIds, likedChek: !!userLikeCheck },
       });
     })
     .catch(() => res.status(500).json({ ok: false, response: 'Internal Server Error' }));

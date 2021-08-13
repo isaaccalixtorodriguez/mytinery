@@ -4,6 +4,7 @@ const itinerary = require('./itineraries/routes');
 const checkuser = require('./checkuser/routes');
 const comments = require('./comments/routes');
 const like = require('./like/routes');
+const comment = require('./comment/routes');
 
 module.exports = {
   city,
@@ -12,4 +13,5 @@ module.exports = {
   checkuser,
   comments,
   like,
+  comment,
 };
